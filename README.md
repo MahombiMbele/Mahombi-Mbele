@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
@@ -216,6 +217,82 @@
     .admin-link{color:rgba(255,253,248,.25);text-decoration:none;font-size:.72rem;letter-spacing:.08em;transition:color .2s;}
     .admin-link:hover{color:var(--gold-light);}
 
+
+    /* ══════════════════════════════════════
+       CALENDRIER
+    ══════════════════════════════════════ */
+    #calendrier{background:var(--light-bg2);}
+    .cal-wrap{max-width:900px;margin:0 auto;}
+    .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+    .cal-nav{background:none;border:1px solid var(--border-dark);color:var(--gold);width:36px;height:36px;font-size:1.1rem;cursor:pointer;transition:background .2s,color .2s;}
+    .cal-nav:hover{background:var(--gold);color:#fff;}
+    .cal-month-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--dark);font-weight:300;}
+    .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+    .cal-day-label{text-align:center;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:.5rem 0;}
+    .cal-cell{min-height:72px;border:1px solid var(--border);padding:.4rem;background:#fff;position:relative;transition:border-color .2s;}
+    .cal-cell.empty{background:var(--light-bg);border-color:transparent;}
+    .cal-cell.today{border-color:var(--gold);background:rgba(184,137,42,.05);}
+    .cal-cell.has-event{border-color:var(--gold-light);}
+    .cal-day-num{font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:.25rem;}
+    .cal-cell.today .cal-day-num{color:var(--gold);font-weight:700;}
+    .cal-event-dot{font-size:.65rem;background:var(--gold);color:#fff;padding:.1rem .35rem;margin-bottom:.15rem;display:block;line-height:1.4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-radius:1px;}
+    .cal-event-dot.priere{background:#7b5ea7;}
+    .cal-event-dot.enseignement{background:#2e7d32;}
+    .cal-event-dot.special{background:#c0392b;}
+    .cal-legend{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:1.5rem;justify-content:center;}
+    .cal-legend-item{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--muted);}
+    .cal-legend-dot{width:12px;height:12px;border-radius:1px;flex-shrink:0;}
+    .cal-upcoming{margin-top:3rem;}
+    .cal-upcoming-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--dark);margin-bottom:1.2rem;}
+    .cal-upcoming-list{display:flex;flex-direction:column;gap:.8rem;}
+    .cal-upcoming-item{display:flex;align-items:center;gap:1.2rem;padding:1rem 1.2rem;border:1px solid var(--border);background:#fff;}
+    .cal-upcoming-badge{width:44px;height:44px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;}
+    .cal-upcoming-badge .day{font-size:1.4rem;font-weight:600;line-height:1;color:var(--dark);}
+    .cal-upcoming-badge .mon{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+    .cal-upcoming-info{flex:1;}
+    .cal-upcoming-info strong{font-size:.92rem;color:var(--dark);display:block;margin-bottom:.2rem;}
+    .cal-upcoming-info span{font-size:.8rem;color:var(--muted);}
+    .cal-upcoming-tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:.25rem .7rem;flex-shrink:0;}
+    .tag-priere{background:#f3eefa;color:#7b5ea7;border:1px solid rgba(123,94,167,.3);}
+    .tag-enseignement{background:#eaf4ea;color:#2e7d32;border:1px solid rgba(46,125,50,.3);}
+    .tag-culte{background:rgba(184,137,42,.1);color:var(--gold);border:1px solid var(--border-dark);}
+    .tag-special{background:#fdeaea;color:#c0392b;border:1px solid rgba(192,57,43,.3);}
+
+    /* ══════════════════════════════════════
+       GROUPES
+    ══════════════════════════════════════ */
+    #groupes{background:var(--light-bg);}
+    .groupes-intro{text-align:center;font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:3rem;max-width:680px;margin-left:auto;margin-right:auto;}
+    .groupes-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+    .groupe-card{border:1px solid var(--border);background:#fff;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+    .groupe-card:hover{transform:translateY(-4px);box-shadow:0 16px 50px rgba(26,18,5,.12);}
+    .groupe-card-header{padding:2rem;background:var(--dark);text-align:center;position:relative;}
+    .groupe-card-header.royaute{background:linear-gradient(135deg,#1a1205,#3d2b0a);}
+    .groupe-card-header.sacrificateur{background:linear-gradient(135deg,#0a1a2e,#1a3a5c);}
+    .groupe-card-header.disciples{background:linear-gradient(135deg,#0a1a0a,#1a3a1a);}
+    .groupe-icon{font-size:2.5rem;margin-bottom:.8rem;}
+    .groupe-name{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;font-weight:400;margin-bottom:.5rem;}
+    .groupe-tagline{font-size:.78rem;color:rgba(255,255,255,.55);letter-spacing:.12em;text-transform:uppercase;}
+    .groupe-card-body{padding:1.8rem;}
+    .groupe-desc{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:1.2rem;}
+    .groupe-info-row{display:flex;align-items:center;gap:.6rem;font-size:.82rem;color:var(--text);margin-bottom:.6rem;}
+    .groupe-info-row svg{width:14px;stroke:var(--gold);fill:none;stroke-width:1.8;flex-shrink:0;}
+    .groupe-membres-count{display:inline-block;background:rgba(184,137,42,.1);color:var(--gold);font-size:.72rem;padding:.25rem .7rem;border:1px solid var(--border-dark);font-weight:600;letter-spacing:.08em;margin-bottom:1.2rem;}
+    .btn-rejoindre{width:100%;background:var(--gold);color:#fff;border:none;padding:.85rem;font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:700;cursor:pointer;transition:background .2s;}
+    .btn-rejoindre:hover{background:var(--dark);}
+    .btn-rejoindre:disabled{background:var(--muted);cursor:not-allowed;opacity:.6;}
+    .groupe-annonce{background:rgba(184,137,42,.07);border-left:3px solid var(--gold);padding:.8rem 1rem;margin-bottom:.8rem;font-size:.82rem;color:var(--text);line-height:1.6;}
+    .groupe-annonce .annonce-date{font-size:.7rem;color:var(--muted);display:block;margin-top:.3rem;}
+
+    /* Modal groupe */
+    .modal-groupe-overlay{display:none;position:fixed;inset:0;background:rgba(26,18,5,.7);z-index:1001;backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1rem;}
+    .modal-groupe-overlay.open{display:flex;}
+    .modal-groupe-box{background:#fff;width:100%;max-width:500px;padding:2.5rem;position:relative;box-shadow:0 30px 80px rgba(26,18,5,.3);}
+    .modal-groupe-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--dark);margin-bottom:.5rem;}
+    .modal-groupe-sub{font-size:.82rem;color:var(--muted);margin-bottom:2rem;line-height:1.6;}
+    .pending-badge{display:inline-block;background:rgba(201,168,76,.15);color:#b8892a;border:1px solid var(--border-dark);font-size:.72rem;padding:.25rem .8rem;font-weight:600;letter-spacing:.08em;margin-top:.8rem;}
+    .approved-badge{display:inline-block;background:rgba(46,125,50,.15);color:#2e7d32;border:1px solid rgba(46,125,50,.3);font-size:.72rem;padding:.25rem .8rem;font-weight:600;letter-spacing:.08em;margin-top:.8rem;}
+
     /* ANIMATIONS */
     @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fadeDown{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
@@ -253,7 +330,7 @@
     <li><a href="#mission">Mission</a></li>
     <li><a href="#vision">Vision</a></li>
     <li><a href="#events">Événements</a></li>
-    <li><a href="#inscription">Inscription</a></li>
+    <li><a href="#calendrier">Calendrier</a></li><li><a href="#groupes">Groupes</a></li><li><a href="#inscription">Inscription</a></li>
     <li><a href="#adhesion">Adhésion</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -543,6 +620,133 @@
   </div>
 </section>
 
+
+<!-- ══════════════════════════════════════
+     CALENDRIER DES CULTES
+══════════════════════════════════════ -->
+<section id="calendrier">
+  <p class="section-label reveal">Planning spirituel</p>
+  <h2 class="section-title reveal">Calendrier des <em>Cultes</em></h2>
+  <div class="section-divider reveal"><div class="divider-diamond"></div></div>
+  <div class="cal-wrap reveal">
+    <div class="cal-header">
+      <button class="cal-nav" onclick="calPrev()">&#8249;</button>
+      <div class="cal-month-title" id="calMonthTitle"></div>
+      <button class="cal-nav" onclick="calNext()">&#8250;</button>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-legend">
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#7b5ea7"></div>Culte de prière (Mer. 21h-22h)</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#2e7d32"></div>Culte d'enseignement (Jeu. 21h-22h)</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--gold)"></div>Culte Dominical (Sam. 12h-15h)</div>
+      <div class="cal-legend-item"><div class="cal-legend-dot" style="background:#c0392b"></div>Événement spécial</div>
+    </div>
+    <div class="cal-upcoming">
+      <div class="cal-upcoming-title">Prochains cultes</div>
+      <div class="cal-upcoming-list" id="calUpcoming"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GROUPES
+══════════════════════════════════════ -->
+<section id="groupes">
+  <p class="section-label reveal">Rejoindre un groupe</p>
+  <h2 class="section-title reveal">Nos <em>Groupes</em></h2>
+  <div class="section-divider reveal"><div class="divider-diamond"></div></div>
+  <p class="groupes-intro reveal">Chaque membre approuvé peut rejoindre l'un de nos trois groupes spirituels. Votre demande sera examinée et validée par l'administrateur du centre.</p>
+
+  <div class="groupes-grid" id="groupesGrid">
+
+    <!-- ROYAUTÉ -->
+    <div class="groupe-card reveal">
+      <div class="groupe-card-header royaute">
+        <div class="groupe-icon">👑</div>
+        <div class="groupe-name">Royauté</div>
+        <div class="groupe-tagline" id="tagline-royaute">Marcher comme des rois en Christ</div>
+      </div>
+      <div class="groupe-card-body">
+        <p class="groupe-desc" id="desc-royaute">Le groupe Royauté est centré sur l'identité du croyant en tant que roi en Christ. Nous apprenons à régner dans la vie par Jésus-Christ.</p>
+        <div class="groupe-info-row" id="resp-royaute-row">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="resp-royaute">Responsable : —</span>
+        </div>
+        <div class="groupe-info-row" id="horaire-royaute-row">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span id="horaire-royaute">Horaire : —</span>
+        </div>
+        <div id="membres-royaute" class="groupe-membres-count">0 membre(s)</div>
+        <div id="annonces-royaute"></div>
+        <button class="btn-rejoindre" onclick="demanderGroupe('Royauté')" id="btn-royaute">Demander à rejoindre</button>
+      </div>
+    </div>
+
+    <!-- SACRIFICATEUR -->
+    <div class="groupe-card reveal">
+      <div class="groupe-card-header sacrificateur">
+        <div class="groupe-icon">🕊️</div>
+        <div class="groupe-name">Sacrificateur</div>
+        <div class="groupe-tagline" id="tagline-sacrificateur">Servir Dieu dans la sainteté</div>
+      </div>
+      <div class="groupe-card-body">
+        <p class="groupe-desc" id="desc-sacrificateur">Le groupe Sacrificateur est dédié au service, à l'intercession et à la sainteté. Nous offrons nos vies comme des sacrifices vivants à Dieu.</p>
+        <div class="groupe-info-row">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="resp-sacrificateur">Responsable : —</span>
+        </div>
+        <div class="groupe-info-row">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span id="horaire-sacrificateur">Horaire : —</span>
+        </div>
+        <div id="membres-sacrificateur" class="groupe-membres-count">0 membre(s)</div>
+        <div id="annonces-sacrificateur"></div>
+        <button class="btn-rejoindre" onclick="demanderGroupe('Sacrificateur')" id="btn-sacrificateur">Demander à rejoindre</button>
+      </div>
+    </div>
+
+    <!-- DISCIPLES -->
+    <div class="groupe-card reveal">
+      <div class="groupe-card-header disciples">
+        <div class="groupe-icon">✝️</div>
+        <div class="groupe-name">Disciples</div>
+        <div class="groupe-tagline" id="tagline-disciples">Suivre Christ et faire des disciples</div>
+      </div>
+      <div class="groupe-card-body">
+        <p class="groupe-desc" id="desc-disciples">Le groupe Disciples s'engage à suivre les pas de Jésus et à former d'autres disciples. Nous vivons et partageons l'évangile au quotidien.</p>
+        <div class="groupe-info-row">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="resp-disciples">Responsable : —</span>
+        </div>
+        <div class="groupe-info-row">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span id="horaire-disciples">Horaire : —</span>
+        </div>
+        <div id="membres-disciples" class="groupe-membres-count">0 membre(s)</div>
+        <div id="annonces-disciples"></div>
+        <button class="btn-rejoindre" onclick="demanderGroupe('Disciples')" id="btn-disciples">Demander à rejoindre</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Modal demande groupe -->
+<div class="modal-groupe-overlay" id="groupeModal">
+  <div class="modal-groupe-box">
+    <button class="modal-close" onclick="closeGroupeModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--muted);">✕</button>
+    <div class="modal-groupe-title" id="groupeModalTitle">Rejoindre le groupe</div>
+    <p class="modal-groupe-sub">Entrez votre email de membre pour soumettre votre demande. Elle sera examinée par l'administrateur.</p>
+    <div class="form-group" style="margin-bottom:1rem;">
+      <label style="font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;font-weight:600;display:block;">Votre email de membre *</label>
+      <input type="email" id="groupeEmail" placeholder="votre@email.com" style="width:100%;background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.85rem 1rem;font-family:'Jost',sans-serif;font-size:.9rem;outline:none;">
+    </div>
+    <div id="groupeModalError" style="font-size:.82rem;color:#c0392b;margin-bottom:.8rem;display:none;">Email non trouvé dans les membres approuvés.</div>
+    <button class="btn-submit" onclick="soumettreDemandeGroupe()" style="width:100%;background:var(--gold);color:#fff;border:none;padding:1rem;font-size:.82rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:700;cursor:pointer;">Soumettre ma demande</button>
+    <div id="groupeModalSuccess" style="display:none;margin-top:1rem;background:rgba(184,137,42,.1);border:1px solid var(--gold);padding:1rem;font-size:.88rem;color:var(--gold);text-align:center;">✓ Demande envoyée ! L'administrateur examinera votre demande.</div>
+  </div>
+</div>
+
 <!-- CONTACT -->
 <section id="contact">
   <p class="section-label reveal">Nous écrire</p>
@@ -605,6 +809,8 @@
         <li><a href="#mission">Mission</a></li>
         <li><a href="#vision">Vision</a></li>
         <li><a href="#events">Événements</a></li>
+        <li><a href="#calendrier">Calendrier</a></li>
+        <li><a href="#groupes">Groupes</a></li>
         <li><a href="#inscription">Inscription membre</a></li>
         <li><a href="#adhesion">Adhésion</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -650,17 +856,19 @@
       <p class="modal-subtitle">Gestion des membres et demandes d'adhésion · Centre Mahombi Mbele</p>
 
       <div class="admin-tabs">
-        <button class="admin-tab active" onclick="switchTab('membres')">👥 Membres inscrits</button>
-        <button class="admin-tab" onclick="switchTab('adhesions')">🤝 Demandes d'adhésion</button>
+        <button class="admin-tab active" onclick="switchTab('membres')">👥 Membres</button>
+        <button class="admin-tab" onclick="switchTab('adhesions')">🤝 Adhésions</button>
+        <button class="admin-tab" onclick="switchTab('groupes-admin')">👑 Groupes</button>
         <button class="admin-tab" onclick="switchTab('anniversaires')">🎂 Anniversaires</button>
       </div>
 
       <!-- PANEL MEMBRES -->
       <div class="admin-panel active" id="panel-membres">
-        <div class="stats-row">
+        <div class="stats-row" style="grid-template-columns:repeat(4,1fr);">
           <div class="stat-card"><div class="stat-num" id="statMembres">0</div><div class="stat-label">Membres inscrits</div></div>
           <div class="stat-card"><div class="stat-num" id="statAnniv">0</div><div class="stat-label">Anniversaires ce mois</div></div>
           <div class="stat-card"><div class="stat-num" id="statAdhesions">0</div><div class="stat-label">Demandes d'adhésion</div></div>
+          <div class="stat-card"><div class="stat-num" id="statDemandes">0</div><div class="stat-label">Demandes de groupe</div></div>
         </div>
         <div id="birthdayAlert"></div>
         <div class="search-bar">
@@ -689,6 +897,61 @@
         </div>
       </div>
 
+
+      <!-- PANEL GROUPES ADMIN -->
+      <div class="admin-panel" id="panel-groupes-admin">
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;">Gérez les informations de chaque groupe et approuvez les demandes d'adhésion aux groupes.</p>
+
+        <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);">⏳ Demandes en attente d'approbation</h4>
+        <div style="overflow-x:auto;margin-bottom:2.5rem;">
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Prénom</th><th>Nom</th><th>Email</th><th>Groupe demandé</th><th>Date</th><th>Action</th></tr></thead>
+            <tbody id="demandesTbody"></tbody>
+          </table>
+        </div>
+
+        <!-- ROYAUTÉ -->
+        <div style="border:1px solid var(--border);padding:1.5rem;margin-bottom:1.5rem;">
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);margin-bottom:1.2rem;">👑 Groupe Royauté</h4>
+          <form id="groupeForm_royaute" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Responsable</label><input name="responsable" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;" placeholder="Nom du responsable"></div>
+            <div class="form-group"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Horaire de réunion</label><input name="horaire" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;" placeholder="Ex: Dimanche 10h00"></div>
+            <div class="form-group" style="grid-column:1/-1;"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Description du groupe</label><textarea name="desc" rows="3" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;resize:none;"></textarea></div>
+          </form>
+          <button onclick="saveGroupeInfo('royaute','Royauté')" style="background:var(--gold);color:#fff;border:none;padding:.6rem 1.5rem;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;margin-bottom:1.2rem;">💾 Sauvegarder</button>
+          <div style="margin-bottom:1rem;"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:.5rem;">📢 Ajouter une annonce</label><div style="display:flex;gap:.6rem;"><input id="annonce_input_royaute" style="flex:1;background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.65rem 1rem;font-family:'Jost',sans-serif;font-size:.85rem;outline:none;" placeholder="Texte de l'annonce..."><button onclick="ajouterAnnonce('royaute','Royauté')" style="background:var(--dark);color:#fff;border:none;padding:.65rem 1.2rem;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;">Ajouter</button></div></div>
+          <div id="annonces_list_royaute" style="margin-bottom:1rem;"></div>
+          <div><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:.5rem;">👥 Membres du groupe</label><div id="membres_groupe_royaute"></div></div>
+        </div>
+
+        <!-- SACRIFICATEUR -->
+        <div style="border:1px solid var(--border);padding:1.5rem;margin-bottom:1.5rem;">
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);margin-bottom:1.2rem;">🕊️ Groupe Sacrificateur</h4>
+          <form id="groupeForm_sacrificateur" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Responsable</label><input name="responsable" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;" placeholder="Nom du responsable"></div>
+            <div class="form-group"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Horaire de réunion</label><input name="horaire" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;" placeholder="Ex: Dimanche 10h00"></div>
+            <div class="form-group" style="grid-column:1/-1;"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Description du groupe</label><textarea name="desc" rows="3" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;resize:none;"></textarea></div>
+          </form>
+          <button onclick="saveGroupeInfo('sacrificateur','Sacrificateur')" style="background:var(--gold);color:#fff;border:none;padding:.6rem 1.5rem;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;margin-bottom:1.2rem;">💾 Sauvegarder</button>
+          <div style="margin-bottom:1rem;"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:.5rem;">📢 Ajouter une annonce</label><div style="display:flex;gap:.6rem;"><input id="annonce_input_sacrificateur" style="flex:1;background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.65rem 1rem;font-family:'Jost',sans-serif;font-size:.85rem;outline:none;" placeholder="Texte de l'annonce..."><button onclick="ajouterAnnonce('sacrificateur','Sacrificateur')" style="background:var(--dark);color:#fff;border:none;padding:.65rem 1.2rem;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;">Ajouter</button></div></div>
+          <div id="annonces_list_sacrificateur" style="margin-bottom:1rem;"></div>
+          <div><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:.5rem;">👥 Membres du groupe</label><div id="membres_groupe_sacrificateur"></div></div>
+        </div>
+
+        <!-- DISCIPLES -->
+        <div style="border:1px solid var(--border);padding:1.5rem;">
+          <h4 style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--dark);margin-bottom:1.2rem;">✝️ Groupe Disciples</h4>
+          <form id="groupeForm_disciples" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="form-group"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Responsable</label><input name="responsable" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;" placeholder="Nom du responsable"></div>
+            <div class="form-group"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Horaire de réunion</label><input name="horaire" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;" placeholder="Ex: Dimanche 10h00"></div>
+            <div class="form-group" style="grid-column:1/-1;"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-weight:600;display:block;">Description du groupe</label><textarea name="desc" rows="3" style="background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.7rem 1rem;font-family:'Jost',sans-serif;font-size:.88rem;outline:none;width:100%;resize:none;"></textarea></div>
+          </form>
+          <button onclick="saveGroupeInfo('disciples','Disciples')" style="background:var(--gold);color:#fff;border:none;padding:.6rem 1.5rem;font-family:'Jost',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;cursor:pointer;margin-bottom:1.2rem;">💾 Sauvegarder</button>
+          <div style="margin-bottom:1rem;"><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:.5rem;">📢 Ajouter une annonce</label><div style="display:flex;gap:.6rem;"><input id="annonce_input_disciples" style="flex:1;background:#fafaf8;border:1px solid var(--border);color:var(--dark);padding:.65rem 1rem;font-family:'Jost',sans-serif;font-size:.85rem;outline:none;" placeholder="Texte de l'annonce..."><button onclick="ajouterAnnonce('disciples','Disciples')" style="background:var(--dark);color:#fff;border:none;padding:.65rem 1.2rem;font-family:'Jost',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;letter-spacing:.08em;text-transform:uppercase;">Ajouter</button></div></div>
+          <div id="annonces_list_disciples" style="margin-bottom:1rem;"></div>
+          <div><label style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:.5rem;">👥 Membres du groupe</label><div id="membres_groupe_disciples"></div></div>
+        </div>
+      </div>
       <!-- PANEL ANNIVERSAIRES -->
       <div class="admin-panel" id="panel-anniversaires">
         <p style="font-size:.88rem;color:var(--muted);margin-bottom:1.5rem;">Liste de tous les membres avec leur date d'anniversaire, triée par mois.</p>
@@ -704,306 +967,442 @@
 </div>
 
 <script>
-// ══════════════════════════════════════
-// CONFIGURATION
-// ══════════════════════════════════════
-const ADMIN_PASS = 'KAM2026'; // ← Changez ce mot de passe !
+const ADMIN_PASS = 'KAM2026';
+const MOIS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+const JOURS_FR = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
+
+// ── Storage ──
+function getData(key){try{return JSON.parse(localStorage.getItem(key))||[];}catch{return[];}}
+function saveData(key,arr){localStorage.setItem(key,JSON.stringify(arr));}
+function getObj(key,def){try{return JSON.parse(localStorage.getItem(key))||def;}catch{return def;}}
+function saveObj(key,obj){localStorage.setItem(key,JSON.stringify(obj));}
 
 // ══════════════════════════════════════
-// STOCKAGE LOCAL DES DONNÉES
+// CALENDRIER
 // ══════════════════════════════════════
-function getData(key) {
-  try { return JSON.parse(localStorage.getItem(key)) || []; }
-  catch { return []; }
+let calYear = new Date().getFullYear();
+let calMonth = new Date().getMonth();
+
+const SPECIAL_EVENTS = [
+  {date:'2026-05-01', label:'Communion Fraternelle', type:'special', heure:'08h00 – 16h00', lieu:'Ferme Ernika'}
+];
+
+function getCultes(year, month) {
+  const events = {};
+  const daysInMonth = new Date(year, month+1, 0).getDate();
+  for(let d=1; d<=daysInMonth; d++){
+    const date = new Date(year, month, d);
+    const dow = date.getDay();
+    const key = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    if(!events[key]) events[key]=[];
+    if(dow===3) events[key].push({label:'Prière',type:'priere',heure:'21h00 – 22h00'});
+    if(dow===4) events[key].push({label:'Enseignement',type:'enseignement',heure:'21h00 – 22h00'});
+    if(dow===6) events[key].push({label:'Culte Dominical',type:'culte',heure:'12h00 – 15h00'});
+  }
+  SPECIAL_EVENTS.forEach(e=>{
+    if(!events[e.date]) events[e.date]=[];
+    events[e.date].push({label:e.label,type:e.special||'special',heure:e.heure});
+  });
+  return events;
 }
-function saveData(key, arr) {
-  localStorage.setItem(key, JSON.stringify(arr));
+
+function renderCalendar(){
+  const title = document.getElementById('calMonthTitle');
+  if(!title) return;
+  title.textContent = MOIS_FR[calMonth] + ' ' + calYear;
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  JOURS_FR.forEach(j=>{
+    const el = document.createElement('div');
+    el.className='cal-day-label'; el.textContent=j; grid.appendChild(el);
+  });
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
+  const events = getCultes(calYear, calMonth);
+  const today = new Date();
+  for(let i=0;i<firstDay;i++){
+    const el=document.createElement('div'); el.className='cal-cell empty'; grid.appendChild(el);
+  }
+  for(let d=1;d<=daysInMonth;d++){
+    const el=document.createElement('div'); el.className='cal-cell';
+    const key=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isToday = d===today.getDate()&&calMonth===today.getMonth()&&calYear===today.getFullYear();
+    if(isToday) el.classList.add('today');
+    const dayEvents = events[key]||[];
+    if(dayEvents.length) el.classList.add('has-event');
+    const num=document.createElement('div'); num.className='cal-day-num'; num.textContent=d; el.appendChild(num);
+    dayEvents.forEach(ev=>{
+      const dot=document.createElement('span'); dot.className='cal-event-dot '+ev.type; dot.textContent=ev.label; el.appendChild(dot);
+    });
+    grid.appendChild(el);
+  }
+  renderUpcoming();
+}
+
+function renderUpcoming(){
+  const ul = document.getElementById('calUpcoming');
+  if(!ul) return;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = [];
+  for(let i=0;i<60;i++){
+    const d = new Date(today); d.setDate(today.getDate()+i);
+    const dow = d.getDay();
+    const key = d.toISOString().split('T')[0];
+    if(dow===3) upcoming.push({date:d,label:'Culte de prière',heure:'21h00 – 22h00',type:'priere',lieu:'Temple Mahombi Mbele'});
+    if(dow===4) upcoming.push({date:d,label:'Culte d\u2019enseignement',heure:'21h00 – 22h00',type:'enseignement',lieu:'Temple Mahombi Mbele'});
+    if(dow===6) upcoming.push({date:d,label:'Culte Dominical — La Croissance',heure:'12h00 – 15h00',type:'culte',lieu:'Temple Mahombi Mbele'});
+    SPECIAL_EVENTS.forEach(e=>{if(e.date===key) upcoming.push({date:d,label:e.label,heure:e.heure,type:'special',lieu:e.lieu||'Temple Mahombi Mbele'});});
+    if(upcoming.length>=6) break;
+  }
+  ul.innerHTML = upcoming.slice(0,6).map(ev=>{
+    const tagClass = {priere:'tag-priere',enseignement:'tag-enseignement',culte:'tag-culte',special:'tag-special'}[ev.type]||'tag-culte';
+    const tagLabel = {priere:'Prière',enseignement:'Enseignement',culte:'Culte',special:'Spécial'}[ev.type]||'Événement';
+    return `<div class="cal-upcoming-item">
+      <div class="cal-upcoming-badge" style="background:var(--light-bg);border:1px solid var(--border);">
+        <span class="day">${ev.date.getDate()}</span>
+        <span class="mon">${MOIS_FR[ev.date.getMonth()].substring(0,3)}</span>
+      </div>
+      <div class="cal-upcoming-info">
+        <strong>${ev.label}</strong>
+        <span>🕐 ${ev.heure} &nbsp;·&nbsp; 📍 ${ev.lieu}</span>
+      </div>
+      <span class="cal-upcoming-tag ${tagClass}">${tagLabel}</span>
+    </div>`;
+  }).join('');
+}
+
+function calPrev(){if(calMonth===0){calMonth=11;calYear--;}else calMonth--;renderCalendar();}
+function calNext(){if(calMonth===11){calMonth=0;calYear++;}else calMonth++;renderCalendar();}
+
+// ══════════════════════════════════════
+// GROUPES
+// ══════════════════════════════════════
+let currentGroupe = '';
+
+const GROUPES_DEF = {
+  'Royauté':     {icon:'👑', color:'royaute'},
+  'Sacrificateur':{icon:'🕊️', color:'sacrificateur'},
+  'Disciples':   {icon:'✝️', color:'disciples'}
+};
+
+function getGroupeKey(g){return 'groupe_'+g.toLowerCase().replace(/[éè]/g,'e');}
+
+function renderGroupes(){
+  ['Royauté','Sacrificateur','Disciples'].forEach(g=>{
+    const key = getGroupeKey(g);
+    const info = getObj('groupeInfo_'+key, {});
+    const membres = getData('membres').filter(m=>m.groupe===g&&m.groupeApprouve);
+    const demandes = getData('demandesGroupe').filter(d=>d.groupe===g&&!d.approuve);
+    const id = g.toLowerCase().replace('é','e').replace('è','e');
+
+    const descEl = document.getElementById('desc-'+id);
+    const respEl = document.getElementById('resp-'+id);
+    const horaireEl = document.getElementById('horaire-'+id);
+    const membresEl = document.getElementById('membres-'+id);
+    const annoncesEl = document.getElementById('annonces-'+id);
+
+    if(descEl && info.desc) descEl.textContent = info.desc;
+    if(respEl) respEl.textContent = 'Responsable : ' + (info.responsable||'—');
+    if(horaireEl) horaireEl.textContent = 'Horaire : ' + (info.horaire||'—');
+    if(membresEl) membresEl.textContent = membres.length + ' membre(s) approuvé(s)';
+    if(annoncesEl){
+      const annonces = info.annonces||[];
+      annoncesEl.innerHTML = annonces.slice(-2).map(a=>`<div class="groupe-annonce">${a.texte}<span class="annonce-date">${a.date}</span></div>`).join('');
+    }
+  });
+}
+
+function demanderGroupe(nom){
+  currentGroupe = nom;
+  document.getElementById('groupeModalTitle').textContent = '👥 Rejoindre — ' + nom;
+  document.getElementById('groupeEmail').value = '';
+  document.getElementById('groupeModalError').style.display = 'none';
+  document.getElementById('groupeModalSuccess').style.display = 'none';
+  document.getElementById('groupeModal').classList.add('open');
+}
+
+function closeGroupeModal(){
+  document.getElementById('groupeModal').classList.remove('open');
+}
+
+function soumettreDemandeGroupe(){
+  const email = document.getElementById('groupeEmail').value.trim().toLowerCase();
+  const membres = getData('membres');
+  const membre = membres.find(m=>m.email.toLowerCase()===email && m.approuve);
+  if(!membre){
+    document.getElementById('groupeModalError').style.display = 'block';
+    return;
+  }
+  const demandes = getData('demandesGroupe');
+  const existe = demandes.find(d=>d.membreId===membre.id&&d.groupe===currentGroupe&&!d.approuve);
+  if(existe){
+    document.getElementById('groupeModalError').textContent = 'Vous avez déjà une demande en attente pour ce groupe.';
+    document.getElementById('groupeModalError').style.display = 'block';
+    return;
+  }
+  demandes.push({id:Date.now(),membreId:membre.id,prenom:membre.prenom,nom:membre.nom,email:membre.email,groupe:currentGroupe,date:new Date().toISOString().split('T')[0],approuve:false});
+  saveData('demandesGroupe',demandes);
+  document.getElementById('groupeModalSuccess').style.display = 'block';
+  document.getElementById('groupeModalError').style.display = 'none';
+  setTimeout(()=>closeGroupeModal(),3000);
 }
 
 // ══════════════════════════════════════
 // FORMULAIRES
 // ══════════════════════════════════════
-function handleMembre(e) {
+function handleMembre(e){
   e.preventDefault();
-  const f = e.target;
-  const entry = {
-    id: Date.now(),
-    prenom: f.prenom.value.trim(),
-    nom: f.nom.value.trim(),
-    date_naissance: f.date_naissance.value,
-    sexe: f.sexe.value,
-    email: f.email.value.trim(),
-    telephone: f.telephone.value.trim(),
-    whatsapp: f.whatsapp.value.trim(),
-    adresse: f.adresse.value.trim(),
-    formation: f.formation.value,
-    source: f.source.value,
-    message: f.message.value.trim(),
-    date_inscription: new Date().toISOString().split('T')[0]
-  };
-  const membres = getData('membres');
-  membres.push(entry);
-  saveData('membres', membres);
-
-  // Envoi Formspree
-  fetch(f.action, { method:'POST', body: new FormData(f), headers:{'Accept':'application/json'} });
-
-  document.getElementById('membreSuccess').style.display = 'block';
+  const f=e.target;
+  const entry={id:Date.now(),prenom:f.prenom.value.trim(),nom:f.nom.value.trim(),date_naissance:f.date_naissance.value,sexe:f.sexe.value,email:f.email.value.trim(),telephone:f.telephone.value.trim(),whatsapp:f.whatsapp.value.trim(),adresse:f.adresse.value.trim(),date_inscription:new Date().toISOString().split('T')[0],approuve:false,groupe:null,groupeApprouve:false};
+  const membres=getData('membres'); membres.push(entry); saveData('membres',membres);
+  fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+  document.getElementById('membreSuccess').style.display='block';
   f.reset();
-  setTimeout(() => document.getElementById('membreSuccess').style.display = 'none', 8000);
+  setTimeout(()=>document.getElementById('membreSuccess').style.display='none',8000);
 }
 
-function handleAdhesion(e) {
+function handleAdhesion(e){
   e.preventDefault();
-  const f = e.target;
-  const entry = {
-    id: Date.now(),
-    prenom: f.prenom.value.trim(),
-    nom: f.nom.value.trim(),
-    date_naissance: f.date_naissance.value,
-    telephone: f.telephone.value.trim(),
-    email: f.email.value.trim(),
-    motivation: f.motivation.value.trim(),
-    contact_prefere: f.contact_prefere.value,
-    disponibilite: f.disponibilite.value,
-    date_demande: new Date().toISOString().split('T')[0]
-  };
-  const adhesions = getData('adhesions');
-  adhesions.push(entry);
-  saveData('adhesions', adhesions);
-
-  fetch(f.action, { method:'POST', body: new FormData(f), headers:{'Accept':'application/json'} });
-
-  document.getElementById('adhesionSuccess').style.display = 'block';
+  const f=e.target;
+  const entry={id:Date.now(),prenom:f.prenom.value.trim(),nom:f.nom.value.trim(),date_naissance:f.date_naissance.value,telephone:f.telephone.value.trim(),email:f.email.value.trim(),motivation:f.motivation.value.trim(),contact_prefere:f.contact_prefere.value,disponibilite:f.disponibilite.value,source:f.source.value,date_demande:new Date().toISOString().split('T')[0]};
+  const adhesions=getData('adhesions'); adhesions.push(entry); saveData('adhesions',adhesions);
+  fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+  document.getElementById('adhesionSuccess').style.display='block';
   f.reset();
-  setTimeout(() => document.getElementById('adhesionSuccess').style.display = 'none', 8000);
+  setTimeout(()=>document.getElementById('adhesionSuccess').style.display='none',8000);
 }
 
-function handleContact(e) {
+function handleContact(e){
   e.preventDefault();
-  fetch(e.target.action, { method:'POST', body: new FormData(e.target), headers:{'Accept':'application/json'} });
-  document.getElementById('contactSuccess').style.display = 'block';
+  fetch(e.target.action,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}});
+  document.getElementById('contactSuccess').style.display='block';
   e.target.reset();
-  setTimeout(() => document.getElementById('contactSuccess').style.display = 'none', 6000);
+  setTimeout(()=>document.getElementById('contactSuccess').style.display='none',6000);
 }
 
 // ══════════════════════════════════════
 // ADMIN
 // ══════════════════════════════════════
-function openAdmin(e) {
-  e.preventDefault();
-  document.getElementById('adminModal').classList.add('open');
-  document.getElementById('adminPassword').value = '';
-  document.getElementById('loginError').style.display = 'none';
-  document.getElementById('loginPanel').style.display = 'block';
-  document.getElementById('adminDash').style.display = 'none';
-}
-function closeAdmin() {
-  document.getElementById('adminModal').classList.remove('open');
-}
-document.getElementById('adminModal').addEventListener('click', function(e) {
-  if (e.target === this) closeAdmin();
-});
+function openAdmin(e){e.preventDefault();document.getElementById('adminModal').classList.add('open');document.getElementById('adminPassword').value='';document.getElementById('loginError').style.display='none';document.getElementById('loginPanel').style.display='block';document.getElementById('adminDash').style.display='none';}
+function closeAdmin(){document.getElementById('adminModal').classList.remove('open');}
+document.getElementById('adminModal').addEventListener('click',function(e){if(e.target===this)closeAdmin();});
+document.getElementById('groupeModal').addEventListener('click',function(e){if(e.target===this)closeGroupeModal();});
 
-function checkPassword() {
-  const val = document.getElementById('adminPassword').value;
-  if (val === ADMIN_PASS) {
-    document.getElementById('loginPanel').style.display = 'none';
-    document.getElementById('adminDash').style.display = 'block';
+function checkPassword(){
+  if(document.getElementById('adminPassword').value===ADMIN_PASS){
+    document.getElementById('loginPanel').style.display='none';
+    document.getElementById('adminDash').style.display='block';
     refreshDashboard();
   } else {
-    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginError').style.display='block';
   }
 }
 
-function switchTab(name) {
-  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+function switchTab(name){
+  document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
   event.target.classList.add('active');
-  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('panel-'+name).classList.add('active');
 }
 
-// ── Helpers dates ──
-function formatDate(d) {
-  if (!d) return '—';
-  const [y,m,j] = d.split('-');
-  return `${j}/${m}/${y}`;
-}
-function getAge(dob) {
-  if (!dob) return '—';
-  const today = new Date();
-  const b = new Date(dob);
-  let age = today.getFullYear() - b.getFullYear();
-  const m = today.getMonth() - b.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < b.getDate())) age--;
-  return age;
-}
-function isBirthdayThisMonth(dob) {
-  if (!dob) return false;
-  return parseInt(dob.split('-')[1]) === new Date().getMonth() + 1;
-}
-function isBirthdayToday(dob) {
-  if (!dob) return false;
-  const today = new Date();
-  const [,m,j] = dob.split('-');
-  return parseInt(m) === today.getMonth()+1 && parseInt(j) === today.getDate();
-}
-const MOIS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+// ── Helpers ──
+function formatDate(d){if(!d)return'—';const[y,m,j]=d.split('-');return`${j}/${m}/${y}`;}
+function getAge(dob){if(!dob)return'—';const today=new Date();const b=new Date(dob);let age=today.getFullYear()-b.getFullYear();const m=today.getMonth()-b.getMonth();if(m<0||(m===0&&today.getDate()<b.getDate()))age--;return age;}
+function isBirthdayThisMonth(dob){if(!dob)return false;return parseInt(dob.split('-')[1])===new Date().getMonth()+1;}
+function isBirthdayToday(dob){if(!dob)return false;const today=new Date();const[,m,j]=dob.split('-');return parseInt(m)===today.getMonth()+1&&parseInt(j)===today.getDate();}
 
-// ── Render membres ──
-function renderMembres() {
-  const membres = getData('membres');
-  const q = (document.getElementById('searchMembre').value || '').toLowerCase();
-  const filtered = membres.filter(m =>
-    (m.prenom+m.nom+m.email+m.telephone).toLowerCase().includes(q)
-  );
-  const tbody = document.getElementById('membresTbody');
-  if (!filtered.length) {
-    tbody.innerHTML = '<tr><td colspan="9" class="empty-state">Aucun membre inscrit pour le moment.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = filtered.map((m,i) => `
-    <tr>
-      <td>${i+1}</td>
-      <td>${m.prenom}</td>
-      <td>${m.nom}</td>
-      <td>
-        ${formatDate(m.date_naissance)}
-        ${isBirthdayToday(m.date_naissance) ? ' <span class="badge-bday">🎂 Aujourd\'hui !</span>' : isBirthdayThisMonth(m.date_naissance) ? ' <span class="badge-bday">🎂 Ce mois</span>' : ''}
-      </td>
-      <td>${m.telephone || '—'}</td>
-      <td><a href="mailto:${m.email}" style="color:var(--gold)">${m.email}</a></td>
-      <td>${formatDate(m.date_inscription)}</td>
-      <td><button class="btn-delete" onclick="deleteMembre(${m.id})">Supprimer</button></td>
-    </tr>
-  `).join('');
+function renderMembres(){
+  const membres=getData('membres');
+  const q=(document.getElementById('searchMembre').value||'').toLowerCase();
+  const filtered=membres.filter(m=>(m.prenom+m.nom+m.email+m.telephone).toLowerCase().includes(q));
+  const tbody=document.getElementById('membresTbody');
+  if(!filtered.length){tbody.innerHTML='<tr><td colspan="9" class="empty-state">Aucun membre inscrit.</td></tr>';return;}
+  tbody.innerHTML=filtered.map((m,i)=>`<tr>
+    <td>${i+1}</td><td>${m.prenom}</td><td>${m.nom}</td>
+    <td>${formatDate(m.date_naissance)}${isBirthdayToday(m.date_naissance)?' <span class="badge-bday">🎂 Aujourd\u2019hui</span>':isBirthdayThisMonth(m.date_naissance)?' <span class="badge-bday">🎂 Ce mois</span>':''}</td>
+    <td>${m.telephone||'—'}</td>
+    <td><a href="mailto:${m.email}" style="color:var(--gold)">${m.email}</a></td>
+    <td>${m.groupe?'<span class="badge-adhesion">'+m.groupe+(m.groupeApprouve?' ✓':'  ⏳')+'</span>':'—'}</td>
+    <td><span class="${m.approuve?'approved-badge':'pending-badge'}">${m.approuve?'✓ Approuvé':'⏳ En attente'}</span></td>
+    <td style="display:flex;gap:.4rem;flex-wrap:wrap;">
+      ${!m.approuve?`<button class="btn-delete" style="background:none;border:1px solid #2e7d32;color:#2e7d32;" onclick="approuverMembre(${m.id})">✓ Approuver</button>`:''}
+      <button class="btn-delete" onclick="deleteMembre(${m.id})">Supprimer</button>
+    </td>
+  </tr>`).join('');
 }
 
-// ── Render adhésions ──
-function renderAdhesions() {
-  const adhesions = getData('adhesions');
-  const q = (document.getElementById('searchAdhesion').value || '').toLowerCase();
-  const filtered = adhesions.filter(a =>
-    (a.prenom+a.nom+a.email+a.telephone).toLowerCase().includes(q)
-  );
-  const tbody = document.getElementById('adhesionsTbody');
-  if (!filtered.length) {
-    tbody.innerHTML = '<tr><td colspan="10" class="empty-state">Aucune demande d\'adhésion pour le moment.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = filtered.map((a,i) => `
-    <tr>
-      <td>${i+1}</td>
-      <td>${a.prenom}</td>
-      <td>${a.nom}</td>
-      <td>${formatDate(a.date_naissance)}</td>
-      <td>${a.telephone || '—'}</td>
-      <td><a href="mailto:${a.email}" style="color:var(--gold)">${a.email}</a></td>
-      <td>${a.contact_prefere || '—'}</td>
-      <td style="max-width:200px;white-space:normal;font-size:.8rem;">${a.motivation || '—'}</td>
-      <td>${formatDate(a.date_demande)}</td>
-      <td><button class="btn-delete" onclick="deleteAdhesion(${a.id})">Supprimer</button></td>
-    </tr>
-  `).join('');
+function renderAdhesions(){
+  const adhesions=getData('adhesions');
+  const q=(document.getElementById('searchAdhesion').value||'').toLowerCase();
+  const filtered=adhesions.filter(a=>(a.prenom+a.nom+a.email+a.telephone).toLowerCase().includes(q));
+  const tbody=document.getElementById('adhesionsTbody');
+  if(!filtered.length){tbody.innerHTML="<tr><td colspan=\"9\" class=\"empty-state\">Aucune demande d'adhésion.</td></tr>";return;}
+  tbody.innerHTML=filtered.map((a,i)=>`<tr>
+    <td>${i+1}</td><td>${a.prenom}</td><td>${a.nom}</td><td>${formatDate(a.date_naissance)}</td>
+    <td>${a.telephone||'—'}</td><td><a href="mailto:${a.email}" style="color:var(--gold)">${a.email}</a></td>
+    <td>${a.contact_prefere||'—'}</td>
+    <td style="max-width:180px;white-space:normal;font-size:.8rem;">${a.motivation||'—'}</td>
+    <td><button class="btn-delete" onclick="deleteAdhesion(${a.id})">Supprimer</button></td>
+  </tr>`).join('');
 }
 
-// ── Render anniversaires ──
-function renderAnniversaires() {
-  const membres = getData('membres');
-  if (!membres.length) {
-    document.getElementById('anniversairesTbody').innerHTML = '<tr><td colspan="7" class="empty-state">Aucun membre inscrit.</td></tr>';
-    return;
-  }
-  const sorted = [...membres].sort((a,b) => {
-    const ma = a.date_naissance ? parseInt(a.date_naissance.split('-')[1]) : 13;
-    const mb = b.date_naissance ? parseInt(b.date_naissance.split('-')[1]) : 13;
-    if (ma !== mb) return ma - mb;
-    const ja = a.date_naissance ? parseInt(a.date_naissance.split('-')[2]) : 32;
-    const jb = b.date_naissance ? parseInt(b.date_naissance.split('-')[2]) : 32;
-    return ja - jb;
+function renderDemandesGroupe(){
+  const demandes=getData('demandesGroupe').filter(d=>!d.approuve);
+  const tbody=document.getElementById('demandesTbody');
+  if(!tbody) return;
+  if(!demandes.length){tbody.innerHTML='<tr><td colspan="6" class="empty-state">Aucune demande en attente.</td></tr>';return;}
+  tbody.innerHTML=demandes.map((d,i)=>`<tr>
+    <td>${i+1}</td><td>${d.prenom}</td><td>${d.nom}</td>
+    <td><a href="mailto:${d.email}" style="color:var(--gold)">${d.email}</a></td>
+    <td><strong>${d.groupe}</strong></td><td>${formatDate(d.date)}</td>
+    <td style="display:flex;gap:.4rem;">
+      <button class="btn-delete" style="background:none;border:1px solid #2e7d32;color:#2e7d32;" onclick="approuverGroupe(${d.id})">✓ Approuver</button>
+      <button class="btn-delete" onclick="refuserGroupe(${d.id})">Refuser</button>
+    </td>
+  </tr>`).join('');
+}
+
+function renderGroupesAdmin(){
+  ['Royauté','Sacrificateur','Disciples'].forEach(g=>{
+    const key=getGroupeKey(g);
+    const info=getObj('groupeInfo_'+key,{});
+    const id=g==='Royauté'?'royaute':g==='Sacrificateur'?'sacrificateur':'disciples';
+    const el=document.getElementById('groupeForm_'+id);
+    if(!el) return;
+    el.querySelector('[name="responsable"]').value=info.responsable||'';
+    el.querySelector('[name="horaire"]').value=info.horaire||'';
+    el.querySelector('[name="desc"]').value=info.desc||'';
+    const annEl=document.getElementById('annonces_list_'+id);
+    if(annEl){
+      const annonces=info.annonces||[];
+      annEl.innerHTML=annonces.length?annonces.map((a,i)=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border:1px solid var(--border);margin-bottom:.4rem;font-size:.82rem;"><span>${a.texte} <em style="color:var(--muted);font-size:.75rem;">(${a.date})</em></span><button onclick="deleteAnnonce('${key}',${i})" style="background:none;border:none;color:#c0392b;cursor:pointer;font-size:.9rem;">✕</button></div>`).join(''):'<p style="font-size:.82rem;color:var(--muted);">Aucune annonce.</p>';
+    }
+    const membresGroupe=getData('membres').filter(m=>m.groupe===g&&m.groupeApprouve);
+    const memEl=document.getElementById('membres_groupe_'+id);
+    if(memEl) memEl.innerHTML=membresGroupe.length?membresGroupe.map(m=>`<div style="font-size:.82rem;padding:.4rem .8rem;border:1px solid var(--border);margin-bottom:.3rem;display:flex;justify-content:space-between;"><span>${m.prenom} ${m.nom}</span><span style="color:var(--muted)">${m.email}</span></div>`).join(''):'<p style="font-size:.82rem;color:var(--muted);">Aucun membre approuvé dans ce groupe.</p>';
   });
-  document.getElementById('anniversairesTbody').innerHTML = sorted.map(m => {
-    const mois = m.date_naissance ? MOIS[parseInt(m.date_naissance.split('-')[1])-1] : '—';
-    const today = isBirthdayToday(m.date_naissance);
-    const thisMonth = isBirthdayThisMonth(m.date_naissance);
-    return `<tr ${today ? 'style="background:rgba(184,137,42,.08)"' : ''}>
-      <td>${mois} ${thisMonth ? '<span class="badge-bday">Ce mois</span>' : ''}</td>
-      <td>${m.prenom}</td>
-      <td>${m.nom}</td>
-      <td>${formatDate(m.date_naissance)} ${today ? '🎂' : ''}</td>
-      <td>${getAge(m.date_naissance)} ans</td>
-      <td>${m.telephone || '—'}</td>
-      <td><a href="mailto:${m.email}" style="color:var(--gold)">${m.email}</a></td>
-    </tr>`;
-  }).join('');
 }
 
-// ── Stats ──
-function refreshDashboard() {
-  const membres = getData('membres');
-  const adhesions = getData('adhesions');
-  const thisMonth = membres.filter(m => isBirthdayThisMonth(m.date_naissance));
-  const todayBdays = membres.filter(m => isBirthdayToday(m.date_naissance));
+function saveGroupeInfo(groupeId, nom){
+  const key=getGroupeKey(nom);
+  const f=document.getElementById('groupeForm_'+groupeId);
+  const info=getObj('groupeInfo_'+key,{});
+  info.responsable=f.querySelector('[name="responsable"]').value;
+  info.horaire=f.querySelector('[name="horaire"]').value;
+  info.desc=f.querySelector('[name="desc"]').value;
+  saveObj('groupeInfo_'+key,info);
+  renderGroupes();
+  renderGroupesAdmin();
+  alert('✓ Informations du groupe '+nom+' sauvegardées !');
+}
 
-  document.getElementById('statMembres').textContent = membres.length;
-  document.getElementById('statAnniv').textContent = thisMonth.length;
-  document.getElementById('statAdhesions').textContent = adhesions.length;
+function ajouterAnnonce(groupeId, nom){
+  const key=getGroupeKey(nom);
+  const input=document.getElementById('annonce_input_'+groupeId);
+  if(!input.value.trim()) return;
+  const info=getObj('groupeInfo_'+key,{});
+  if(!info.annonces) info.annonces=[];
+  info.annonces.push({texte:input.value.trim(),date:new Date().toLocaleDateString('fr-FR')});
+  saveObj('groupeInfo_'+key,info);
+  input.value='';
+  renderGroupes();
+  renderGroupesAdmin();
+}
 
-  const alert = document.getElementById('birthdayAlert');
-  if (todayBdays.length) {
-    alert.innerHTML = `<div class="birthday-alert">🎂 <strong>Anniversaire aujourd'hui !</strong> ${todayBdays.map(m => m.prenom + ' ' + m.nom).join(', ')}</div>`;
-  } else if (thisMonth.length) {
-    alert.innerHTML = `<div class="birthday-alert">🎂 <strong>${thisMonth.length} anniversaire(s) ce mois-ci :</strong> ${thisMonth.map(m => m.prenom + ' ' + m.nom + ' (' + formatDate(m.date_naissance) + ')').join(' · ')}</div>`;
-  } else {
-    alert.innerHTML = '';
-  }
+function deleteAnnonce(key,idx){
+  const info=getObj('groupeInfo_'+key,{});
+  if(info.annonces) info.annonces.splice(idx,1);
+  saveObj('groupeInfo_'+key,info);
+  renderGroupes();
+  renderGroupesAdmin();
+}
 
+function approuverMembre(id){
+  const membres=getData('membres');
+  const m=membres.find(m=>m.id===id);
+  if(m){m.approuve=true;saveData('membres',membres);refreshDashboard();renderGroupes();}
+}
+
+function approuverGroupe(id){
+  const demandes=getData('demandesGroupe');
+  const d=demandes.find(d=>d.id===id);
+  if(!d) return;
+  d.approuve=true;
+  saveData('demandesGroupe',demandes);
+  const membres=getData('membres');
+  const m=membres.find(m=>m.id===d.membreId);
+  if(m){m.groupe=d.groupe;m.groupeApprouve=true;saveData('membres',membres);}
+  refreshDashboard();
+  renderGroupes();
+}
+
+function refuserGroupe(id){
+  if(!confirm('Refuser cette demande ?')) return;
+  saveData('demandesGroupe',getData('demandesGroupe').filter(d=>d.id!==id));
+  refreshDashboard();
+}
+
+function deleteMembre(id){if(!confirm('Supprimer ce membre ?'))return;saveData('membres',getData('membres').filter(m=>m.id!==id));refreshDashboard();}
+function deleteAdhesion(id){if(!confirm('Supprimer ?'))return;saveData('adhesions',getData('adhesions').filter(a=>a.id!==id));refreshDashboard();}
+
+function renderAnniversaires(){
+  const membres=getData('membres');
+  if(!membres.length){document.getElementById('anniversairesTbody').innerHTML='<tr><td colspan="7" class="empty-state">Aucun membre.</td></tr>';return;}
+  const sorted=[...membres].sort((a,b)=>{const ma=a.date_naissance?parseInt(a.date_naissance.split('-')[1]):13;const mb=b.date_naissance?parseInt(b.date_naissance.split('-')[1]):13;if(ma!==mb)return ma-mb;const ja=a.date_naissance?parseInt(a.date_naissance.split('-')[2]):32;const jb=b.date_naissance?parseInt(b.date_naissance.split('-')[2]):32;return ja-jb;});
+  document.getElementById('anniversairesTbody').innerHTML=sorted.map(m=>{const mois=m.date_naissance?MOIS_FR[parseInt(m.date_naissance.split('-')[1])-1]:'—';const today=isBirthdayToday(m.date_naissance);const thisMonth=isBirthdayThisMonth(m.date_naissance);return`<tr ${today?'style="background:rgba(184,137,42,.08)"':''}>
+    <td>${mois} ${thisMonth?'<span class="badge-bday">Ce mois</span>':''}</td>
+    <td>${m.prenom}</td><td>${m.nom}</td>
+    <td>${formatDate(m.date_naissance)} ${today?'🎂':''}</td>
+    <td>${getAge(m.date_naissance)} ans</td>
+    <td>${m.telephone||'—'}</td>
+    <td><a href="mailto:${m.email}" style="color:var(--gold)">${m.email}</a></td>
+  </tr>`;}).join('');
+}
+
+function refreshDashboard(){
+  const membres=getData('membres');
+  const adhesions=getData('adhesions');
+  const demandes=getData('demandesGroupe').filter(d=>!d.approuve);
+  const thisMonth=membres.filter(m=>isBirthdayThisMonth(m.date_naissance));
+  const todayBdays=membres.filter(m=>isBirthdayToday(m.date_naissance));
+  document.getElementById('statMembres').textContent=membres.length;
+  document.getElementById('statAnniv').textContent=thisMonth.length;
+  document.getElementById('statAdhesions').textContent=adhesions.length;
+  document.getElementById('statDemandes').textContent=demandes.length;
+  const alert=document.getElementById('birthdayAlert');
+  if(todayBdays.length){alert.innerHTML=`<div class="birthday-alert">🎂 <strong>Anniversaire aujourd'hui !</strong> ${todayBdays.map(m=>m.prenom+' '+m.nom).join(', ')}</div>`;}
+  else if(thisMonth.length){alert.innerHTML=`<div class="birthday-alert">🎂 <strong>${thisMonth.length} anniversaire(s) ce mois :</strong> ${thisMonth.map(m=>m.prenom+' '+m.nom+' ('+formatDate(m.date_naissance)+')').join(' · ')}</div>`;}
+  else alert.innerHTML='';
   renderMembres();
   renderAdhesions();
+  renderDemandesGroupe();
   renderAnniversaires();
+  renderGroupesAdmin();
 }
 
-// ── Suppressions ──
-function deleteMembre(id) {
-  if (!confirm('Supprimer ce membre ?')) return;
-  saveData('membres', getData('membres').filter(m => m.id !== id));
-  refreshDashboard();
-}
-function deleteAdhesion(id) {
-  if (!confirm('Supprimer cette demande ?')) return;
-  saveData('adhesions', getData('adhesions').filter(a => a.id !== id));
-  refreshDashboard();
-}
-
-// ── Export CSV ──
-function exportCSV(type) {
-  const data = getData(type);
-  if (!data.length) { alert('Aucune donnée à exporter.'); return; }
-  const keys = Object.keys(data[0]).filter(k => k !== 'id');
-  const header = keys.join(';');
-  const rows = data.map(r => keys.map(k => '"' + (r[k] || '').toString().replace(/"/g,'""') + '"').join(';'));
-  const csv = '\uFEFF' + header + '\n' + rows.join('\n');
-  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = type + '_mahombi_' + new Date().toISOString().split('T')[0] + '.csv';
-  a.click(); URL.revokeObjectURL(url);
+function exportCSV(type){
+  const data=getData(type);
+  if(!data.length){alert('Aucune donnée.');return;}
+  const keys=Object.keys(data[0]).filter(k=>k!=='id');
+  const csv='\ufeff'+keys.join(';')+'\n'+data.map(r=>keys.map(k=>'"'+(r[k]||'').toString().replace(/"/g,'""')+'"').join(';')).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  a.download=type+'_mahombi_'+new Date().toISOString().split('T')[0]+'.csv';
+  a.click();
 }
 
 // ══════════════════════════════════════
 // SCROLL & NAV
 // ══════════════════════════════════════
-function toggleMenu() {
-  document.getElementById('navLinks').classList.toggle('open');
-}
-const reveals = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-reveals.forEach(r => obs.observe(r));
-window.addEventListener('scroll', () => {
-  document.getElementById('navbar').style.boxShadow = window.scrollY > 30 ? '0 4px 30px rgba(26,18,5,.1)' : '0 2px 20px rgba(184,137,42,0.08)';
-});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');}
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.1});
+reveals.forEach(r=>obs.observe(r));
+window.addEventListener('scroll',()=>{document.getElementById('navbar').style.boxShadow=window.scrollY>30?'0 4px 30px rgba(26,18,5,.1)':'0 2px 20px rgba(184,137,42,0.08)';});
+
+// Init
+renderCalendar();
+renderGroupes();
 </script>
 </body>
 </html>
