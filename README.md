@@ -495,7 +495,7 @@
     </div>
     <div class="event-card reveal">
       <div class="event-number">02</div>
-      <h3 class="event-title">Réunions de Communauté0000000000000000</h3>
+      <h3 class="event-title">Réunions de Communauté</h3>
       <p class="event-desc">Des moments de rencontre, de prière et de partage pour grandir ensemble dans la foi et la fraternité chrétienne.</p>
       <a href="#contact" class="event-link">Rejoindre →</a>
     </div>
