@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
@@ -439,39 +440,7 @@
         </div>
       </div>
 
-      <div class="form-section-title" style="margin-top:2rem;">
-        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        Parcours spirituel
-      </div>
 
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Comment avez-vous connu le centre ?</label>
-          <select name="source">
-            <option value="" disabled selected>Sélectionner</option>
-            <option>Un ami / membre</option>
-            <option>Réseaux sociaux</option>
-            <option>Événement</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Formation souhaitée</label>
-          <select name="formation">
-            <option value="" disabled selected>Sélectionner</option>
-            <option>Culte Dominical (samedis)</option>
-            <option>Journée Communion Fraternelle</option>
-            <option>Toutes les formations</option>
-            <option>À définir</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-grid full">
-        <div class="form-group">
-          <label>Message ou demande particulière</label>
-          <textarea name="message" placeholder="Partagez-nous votre motivation ou toute information utile..."></textarea>
-        </div>
-      </div>
 
       <button type="submit" class="btn-submit">✉️ &nbsp;Envoyer mon inscription</button>
       <div class="form-success" id="membreSuccess">🙏 Merci ! Votre inscription a bien été reçue. Nous vous contacterons très prochainement. Que Dieu vous bénisse !</div>
@@ -701,7 +670,7 @@
         </div>
         <div style="overflow-x:auto;">
           <table class="data-table">
-            <thead><tr><th>#</th><th>Prénom</th><th>Nom</th><th>Date de naissance</th><th>Téléphone</th><th>Email</th><th>Formation</th><th>Inscrit le</th><th></th></tr></thead>
+            <thead><tr><th>#</th><th>Prénom</th><th>Nom</th><th>Date de naissance</th><th>Téléphone</th><th>Email</th><th>Inscrit le</th><th></th></tr></thead>
             <tbody id="membresTbody"></tbody>
           </table>
         </div>
@@ -905,7 +874,6 @@ function renderMembres() {
       </td>
       <td>${m.telephone || '—'}</td>
       <td><a href="mailto:${m.email}" style="color:var(--gold)">${m.email}</a></td>
-      <td>${m.formation || '—'}</td>
       <td>${formatDate(m.date_inscription)}</td>
       <td><button class="btn-delete" onclick="deleteMembre(${m.id})">Supprimer</button></td>
     </tr>
