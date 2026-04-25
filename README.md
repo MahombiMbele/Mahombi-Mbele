@@ -490,12 +490,12 @@
     <div class="event-card reveal">
       <div class="event-number">01</div>
       <h3 class="event-title">Formation & Enseignement</h3>
-      <p class="event-desc">1Des sessions d'enseignement biblique approfondies pour équiper chaque croyant dans sa marche avec Dieu et sa compréhension des Écritures.</p>
+      <p class="event-desc">Des sessions d'enseignement biblique approfondies pour équiper chaque croyant dans sa marche avec Dieu et sa compréhension des Écritures.</p>
       <a href="#contact" class="event-link">S'inscrire →</a>
     </div>
     <div class="event-card reveal">
       <div class="event-number">02</div>
-      <h3 class="event-title">Réunions de Communauté</h3>
+      <h3 class="event-title">Réunions de Communauté0000000000000000</h3>
       <p class="event-desc">Des moments de rencontre, de prière et de partage pour grandir ensemble dans la foi et la fraternité chrétienne.</p>
       <a href="#contact" class="event-link">Rejoindre →</a>
     </div>
