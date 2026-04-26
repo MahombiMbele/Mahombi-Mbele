@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8"/>
@@ -452,7 +453,7 @@
     <p class="inscription-intro">Remplissez ce formulaire pour vous inscrire officiellement comme membre du Centre de Formation Mahombi Mbele. Vos informations nous permettent de vous accompagner personnellement dans votre parcours spirituel.</p>
 
     <!-- ⚠️ IMPORTANT : Remplacez VOTRE_ID_FORMSPREE par votre ID Formspree (gratuit sur formspree.io) -->
-    <form class="form-card" id="membreForm" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" onsubmit="handleMembre(event)">
+    <form class="form-card" id="membreForm" action="#" method="POST" onsubmit="handleMembre(event)">
       <input type="hidden" name="_subject" value="🆕 Nouvelle inscription membre — Centre Mahombi Mbele">
       <input type="hidden" name="type" value="inscription_membre">
 
@@ -551,7 +552,7 @@
     </div>
 
     <!-- ⚠️ IMPORTANT : Remplacez VOTRE_ID_FORMSPREE par votre ID Formspree -->
-    <form class="form-card reveal" id="adhesionForm" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" onsubmit="handleAdhesion(event)">
+    <form class="form-card reveal" id="adhesionForm" action="#" method="POST" onsubmit="handleAdhesion(event)">
       <input type="hidden" name="_subject" value="🙋 Demande d'adhésion — Centre Mahombi Mbele">
       <input type="hidden" name="type" value="demande_adhesion">
 
@@ -768,7 +769,7 @@
       </div>
     </div>
     <div class="reveal">
-      <form class="contact-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" onsubmit="handleContact(event)">
+      <form class="contact-form" action="#" method="POST" onsubmit="handleContact(event)">
         <input type="hidden" name="_subject" value="✉️ Message — Centre Mahombi Mbele">
         <div class="form-row">
           <div class="form-group"><label>Prénom *</label><input type="text" name="prenom" required placeholder="Votre prénom"></div>
@@ -966,6 +967,7 @@
 </div>
 
 <script>
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxjLG6Lk7Hg1lpwnhRjknf4vzMH6p0y0RuFyu9NjiChHP8asfnCWICgrtoXCOn5ffk/exec';
 const ADMIN_PASS = 'KAM2026';
 const MOIS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const JOURS_FR = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
@@ -1139,8 +1141,24 @@ function soumettreDemandeGroupe(){
     document.getElementById('groupeModalError').style.display = 'block';
     return;
   }
-  demandes.push({id:Date.now(),membreId:membre.id,prenom:membre.prenom,nom:membre.nom,email:membre.email,groupe:currentGroupe,date:new Date().toISOString().split('T')[0],approuve:false});
+  const newDemande = {id:Date.now(),membreId:membre.id,prenom:membre.prenom,nom:membre.nom,email:membre.email,groupe:currentGroupe,date:new Date().toLocaleDateString('fr-FR'),approuve:false};
+  demandes.push(newDemande);
   saveData('demandesGroupe',demandes);
+  // Send to Google Sheets
+  fetch(SHEETS_URL, {
+    method:'POST',
+    body: JSON.stringify({
+      type: 'Demandes_Groupes',
+      fields: {
+        'Prénom': membre.prenom,
+        'Nom': membre.nom,
+        'Email': membre.email,
+        'Groupe demandé': currentGroupe,
+        'Date demande': newDemande.date,
+        'Statut': 'En attente'
+      }
+    })
+  }).catch(()=>{});
   document.getElementById('groupeModalSuccess').style.display = 'block';
   document.getElementById('groupeModalError').style.display = 'none';
   setTimeout(()=>closeGroupeModal(),3000);
@@ -1152,9 +1170,42 @@ function soumettreDemandeGroupe(){
 function handleMembre(e){
   e.preventDefault();
   const f=e.target;
-  const entry={id:Date.now(),prenom:f.prenom.value.trim(),nom:f.nom.value.trim(),date_naissance:f.date_naissance.value,sexe:f.sexe.value,email:f.email.value.trim(),telephone:f.telephone.value.trim(),whatsapp:f.whatsapp.value.trim(),adresse:f.adresse.value.trim(),date_inscription:new Date().toISOString().split('T')[0],approuve:false,groupe:null,groupeApprouve:false};
+  const entry={
+    id:Date.now(),
+    prenom:f.prenom.value.trim(),
+    nom:f.nom.value.trim(),
+    date_naissance:f.date_naissance.value,
+    sexe:f.sexe.value,
+    email:f.email.value.trim(),
+    telephone:f.telephone.value.trim(),
+    whatsapp:f.whatsapp.value.trim(),
+    adresse:f.adresse.value.trim(),
+    date_inscription:new Date().toLocaleDateString('fr-FR'),
+    approuve:false,
+    groupe:null,
+    groupeApprouve:false
+  };
+  // Save locally
   const membres=getData('membres'); membres.push(entry); saveData('membres',membres);
-  fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+  // Send to Google Sheets
+  fetch(SHEETS_URL, {
+    method:'POST',
+    body: JSON.stringify({
+      type: 'Membres',
+      fields: {
+        'Prénom': entry.prenom,
+        'Nom': entry.nom,
+        'Date de naissance': entry.date_naissance,
+        'Sexe': entry.sexe,
+        'Email': entry.email,
+        'Téléphone': entry.telephone,
+        'WhatsApp': entry.whatsapp,
+        'Adresse': entry.adresse,
+        'Date inscription': entry.date_inscription,
+        'Statut': 'En attente'
+      }
+    })
+  }).catch(()=>{});
   document.getElementById('membreSuccess').style.display='block';
   f.reset();
   setTimeout(()=>document.getElementById('membreSuccess').style.display='none',8000);
@@ -1163,9 +1214,40 @@ function handleMembre(e){
 function handleAdhesion(e){
   e.preventDefault();
   const f=e.target;
-  const entry={id:Date.now(),prenom:f.prenom.value.trim(),nom:f.nom.value.trim(),date_naissance:f.date_naissance.value,telephone:f.telephone.value.trim(),email:f.email.value.trim(),motivation:f.motivation.value.trim(),contact_prefere:f.contact_prefere.value,disponibilite:f.disponibilite.value,source:f.source.value,date_demande:new Date().toISOString().split('T')[0]};
+  const entry={
+    id:Date.now(),
+    prenom:f.prenom.value.trim(),
+    nom:f.nom.value.trim(),
+    date_naissance:f.date_naissance.value,
+    telephone:f.telephone.value.trim(),
+    email:f.email.value.trim(),
+    motivation:f.motivation.value.trim(),
+    contact_prefere:f.contact_prefere.value,
+    disponibilite:f.disponibilite.value,
+    source:f.source.value,
+    date_demande:new Date().toLocaleDateString('fr-FR')
+  };
   const adhesions=getData('adhesions'); adhesions.push(entry); saveData('adhesions',adhesions);
-  fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}});
+  // Send to Google Sheets
+  fetch(SHEETS_URL, {
+    method:'POST',
+    body: JSON.stringify({
+      type: 'Adhesions',
+      fields: {
+        'Prénom': entry.prenom,
+        'Nom': entry.nom,
+        'Date de naissance': entry.date_naissance,
+        'Téléphone': entry.telephone,
+        'Email': entry.email,
+        'Motivation': entry.motivation,
+        'Contact préféré': entry.contact_prefere,
+        'Disponibilité': entry.disponibilite,
+        'Comment connu': entry.source,
+        'Date demande': entry.date_demande,
+        'Statut': 'Nouveau'
+      }
+    })
+  }).catch(()=>{});
   document.getElementById('adhesionSuccess').style.display='block';
   f.reset();
   setTimeout(()=>document.getElementById('adhesionSuccess').style.display='none',8000);
@@ -1173,9 +1255,24 @@ function handleAdhesion(e){
 
 function handleContact(e){
   e.preventDefault();
-  fetch(e.target.action,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}});
+  const f=e.target;
+  // Send to Google Sheets
+  fetch(SHEETS_URL, {
+    method:'POST',
+    body: JSON.stringify({
+      type: 'Messages',
+      fields: {
+        'Prénom': f.prenom.value.trim(),
+        'Nom': f.nom.value.trim(),
+        'Email': f.email.value.trim(),
+        'Sujet': f.sujet.value,
+        'Message': f.message.value.trim(),
+        'Date': new Date().toLocaleDateString('fr-FR')
+      }
+    })
+  }).catch(()=>{});
   document.getElementById('contactSuccess').style.display='block';
-  e.target.reset();
+  f.reset();
   setTimeout(()=>document.getElementById('contactSuccess').style.display='none',6000);
 }
 
