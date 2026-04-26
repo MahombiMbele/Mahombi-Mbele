@@ -967,7 +967,7 @@
 </div>
 
 <script>
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxjLG6Lk7Hg1lpwnhRjknf4vzMH6p0y0RuFyu9NjiChHP8asfnCWICgrtoXCOn5ffk/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxYqKkkLFyj8QhjBiqvJuJWafJCiYHWWjZCrVhnJF_l2RL49UPh0EyjXzXPf-TzNGiQ/exec';
 const ADMIN_PASS = 'KAM2026';
 const MOIS_FR = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
 const JOURS_FR = ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'];
@@ -977,6 +977,29 @@ function getData(key){try{return JSON.parse(localStorage.getItem(key))||[];}catc
 function saveData(key,arr){localStorage.setItem(key,JSON.stringify(arr));}
 function getObj(key,def){try{return JSON.parse(localStorage.getItem(key))||def;}catch{return def;}}
 function saveObj(key,obj){localStorage.setItem(key,JSON.stringify(obj));}
+
+// ── Google Sheets sender (no-cors workaround) ──
+function sendToSheets(type, fields) {
+  try {
+    // Use no-cors mode with URL params to avoid CORS issues
+    const params = new URLSearchParams();
+    params.append('type', type);
+    Object.entries(fields).forEach(([k, v]) => params.append(k, v || ''));
+    
+    // Method 1: fetch with no-cors (fire and forget)
+    fetch(SHEETS_URL + '?' + params.toString(), {
+      method: 'GET',
+      mode: 'no-cors'
+    }).catch(() => {});
+
+    // Method 2: hidden iframe as backup
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = SHEETS_URL + '?' + params.toString();
+    document.body.appendChild(iframe);
+    setTimeout(() => { try { document.body.removeChild(iframe); } catch(e){} }, 5000);
+  } catch(e) {}
+}
 
 // ══════════════════════════════════════
 // CALENDRIER
@@ -1145,20 +1168,14 @@ function soumettreDemandeGroupe(){
   demandes.push(newDemande);
   saveData('demandesGroupe',demandes);
   // Send to Google Sheets
-  fetch(SHEETS_URL, {
-    method:'POST',
-    body: JSON.stringify({
-      type: 'Demandes_Groupes',
-      fields: {
-        'Prénom': membre.prenom,
-        'Nom': membre.nom,
-        'Email': membre.email,
-        'Groupe demandé': currentGroupe,
-        'Date demande': newDemande.date,
-        'Statut': 'En attente'
-      }
-    })
-  }).catch(()=>{});
+  sendToSheets('Demandes_Groupes', {
+    'Prenom': membre.prenom,
+    'Nom': membre.nom,
+    'Email': membre.email,
+    'Groupe_demande': currentGroupe,
+    'Date_demande': newDemande.date,
+    'Statut': 'En attente'
+  });
   document.getElementById('groupeModalSuccess').style.display = 'block';
   document.getElementById('groupeModalError').style.display = 'none';
   setTimeout(()=>closeGroupeModal(),3000);
@@ -1188,24 +1205,18 @@ function handleMembre(e){
   // Save locally
   const membres=getData('membres'); membres.push(entry); saveData('membres',membres);
   // Send to Google Sheets
-  fetch(SHEETS_URL, {
-    method:'POST',
-    body: JSON.stringify({
-      type: 'Membres',
-      fields: {
-        'Prénom': entry.prenom,
-        'Nom': entry.nom,
-        'Date de naissance': entry.date_naissance,
-        'Sexe': entry.sexe,
-        'Email': entry.email,
-        'Téléphone': entry.telephone,
-        'WhatsApp': entry.whatsapp,
-        'Adresse': entry.adresse,
-        'Date inscription': entry.date_inscription,
-        'Statut': 'En attente'
-      }
-    })
-  }).catch(()=>{});
+  sendToSheets('Membres', {
+    'Prenom': entry.prenom,
+    'Nom': entry.nom,
+    'Date_naissance': entry.date_naissance,
+    'Sexe': entry.sexe,
+    'Email': entry.email,
+    'Telephone': entry.telephone,
+    'WhatsApp': entry.whatsapp,
+    'Adresse': entry.adresse,
+    'Date_inscription': entry.date_inscription,
+    'Statut': 'En attente'
+  });
   document.getElementById('membreSuccess').style.display='block';
   f.reset();
   setTimeout(()=>document.getElementById('membreSuccess').style.display='none',8000);
@@ -1229,25 +1240,19 @@ function handleAdhesion(e){
   };
   const adhesions=getData('adhesions'); adhesions.push(entry); saveData('adhesions',adhesions);
   // Send to Google Sheets
-  fetch(SHEETS_URL, {
-    method:'POST',
-    body: JSON.stringify({
-      type: 'Adhesions',
-      fields: {
-        'Prénom': entry.prenom,
-        'Nom': entry.nom,
-        'Date de naissance': entry.date_naissance,
-        'Téléphone': entry.telephone,
-        'Email': entry.email,
-        'Motivation': entry.motivation,
-        'Contact préféré': entry.contact_prefere,
-        'Disponibilité': entry.disponibilite,
-        'Comment connu': entry.source,
-        'Date demande': entry.date_demande,
-        'Statut': 'Nouveau'
-      }
-    })
-  }).catch(()=>{});
+  sendToSheets('Adhesions', {
+    'Prenom': entry.prenom,
+    'Nom': entry.nom,
+    'Date_naissance': entry.date_naissance,
+    'Telephone': entry.telephone,
+    'Email': entry.email,
+    'Motivation': entry.motivation,
+    'Contact_prefere': entry.contact_prefere,
+    'Disponibilite': entry.disponibilite,
+    'Comment_connu': entry.source,
+    'Date_demande': entry.date_demande,
+    'Statut': 'Nouveau'
+  });
   document.getElementById('adhesionSuccess').style.display='block';
   f.reset();
   setTimeout(()=>document.getElementById('adhesionSuccess').style.display='none',8000);
@@ -1257,20 +1262,14 @@ function handleContact(e){
   e.preventDefault();
   const f=e.target;
   // Send to Google Sheets
-  fetch(SHEETS_URL, {
-    method:'POST',
-    body: JSON.stringify({
-      type: 'Messages',
-      fields: {
-        'Prénom': f.prenom.value.trim(),
-        'Nom': f.nom.value.trim(),
-        'Email': f.email.value.trim(),
-        'Sujet': f.sujet.value,
-        'Message': f.message.value.trim(),
-        'Date': new Date().toLocaleDateString('fr-FR')
-      }
-    })
-  }).catch(()=>{});
+  sendToSheets('Messages', {
+    'Prenom': f.prenom.value.trim(),
+    'Nom': f.nom.value.trim(),
+    'Email': f.email.value.trim(),
+    'Sujet': f.sujet.value,
+    'Message': f.message.value.trim(),
+    'Date': new Date().toLocaleDateString('fr-FR')
+  });
   document.getElementById('contactSuccess').style.display='block';
   f.reset();
   setTimeout(()=>document.getElementById('contactSuccess').style.display='none',6000);
